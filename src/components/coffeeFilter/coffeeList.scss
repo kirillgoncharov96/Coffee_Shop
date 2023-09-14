@@ -1,0 +1,71 @@
+.coffee {
+    &__list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        .error {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0 auto;
+        }
+    }
+    &__items {
+        display: grid;
+        grid-auto-columns: 1fr;
+        grid-auto-rows: 1fr;
+        gap: 70px;
+        grid-template: 1fr / repeat(3, 220px);
+
+        @media(max-width: 850px) {
+            grid-template: 1fr / repeat(2, 220px);
+        }
+
+        @media(max-width: 575px) {
+            grid-template: 1fr / 220px;
+            gap: 40px;
+        }
+    }
+    &__item {
+        &-img {
+            margin: auto;
+        }
+        &-link {
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.75);
+            padding: 20px;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+            scale: 1;
+            transition: all 0.5s ease-in-out;
+
+            &:hover {
+                scale: 1.1;
+                box-shadow: 15px 15px 3px #5f4430;
+                background: #e3d1c5;
+            }
+        }
+        &-title {
+            color: #000;
+            margin: 0;
+            font-size: 14px;
+        }
+        &-country {
+            color: #000;
+            margin: 0;
+            font-size: 14px;
+            font-weight: 400;
+        }
+        &-price {
+            color: #000;
+            margin: 0;
+            font-size: 14px;
+            font-weight: 700;    
+        }
+    }
+}
+// .coffee__list.error {
+//     grid-column-start: 1;
+// }

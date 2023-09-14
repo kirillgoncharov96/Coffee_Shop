@@ -1,0 +1,28 @@
+.divider {
+    position: relative;
+    height: 30px;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        background-color: #000;
+        width: 60px;
+        height: 1px;
+        bottom: 50%;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+    }
+
+    &::before {
+        right: 55px;
+    }
+
+    &::after {
+        left: 55px;
+    }
+}
+
+.divider__img {
+    height: 30px;
+    width: 30px;
+}

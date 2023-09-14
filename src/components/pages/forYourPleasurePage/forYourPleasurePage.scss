@@ -1,0 +1,11 @@
+@import '../../styles/general';
+
+.goods {
+    &-header {
+        background: url("../../../assets/img/background_img/coffee_for_your_pleasure.png") no-repeat;
+        background-size: cover;
+        background-position: 50%, center;
+        padding: 50px 0 85px 0;
+        text-align: center;
+    }
+}
