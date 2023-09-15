@@ -1,3 +1,5 @@
+@import '../styles/variables.scss';
+
 .coffee {
     &__list {
         list-style: none;
@@ -57,7 +59,7 @@
         }
         &-link {
             border-radius: 8px;
-            background: rgba(255, 255, 255, 0.75);
+            background: $main-color;
             padding: 20px;
             text-decoration: none;
             display: flex;
@@ -69,29 +71,27 @@
 
             &:hover {
                 scale: 1.1;
-                box-shadow: 15px 15px 3px #5f4430;
-                background: #e3d1c5;
+                box-shadow: 15px 15px 3px $brown;
+                background: $grey;
             }
         }
         &-title {
-            color: #000;
+            color: $dark;
             margin: 0;
             font-size: 14px;
         }
         &-country {
-            color: #000;
+            color: $dark;
             margin: 0;
             font-size: 14px;
             font-weight: 400;
         }
         &-price {
-            color: #000;
+            color: $dark;
             margin: 0;
             font-size: 14px;
             font-weight: 700;    
         }
     }
 }
-// .coffee__list.error {
-//     grid-column-start: 1;
-// }
+

@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 .about {
     &__container {
         display: flex;
@@ -10,7 +12,7 @@
             content: '';
             position: absolute;
             width: 240px;
-            background-color: #000;
+            background-color: $dark;
             height: 1px;
             bottom: 0%;
         }
@@ -109,15 +111,15 @@
         }
     }
     .nav__item {
-        color: #000;
+        color: $dark;
         text-shadow: none;
         &::before {
-            background-color:#000;
+            background-color:$dark;
         }
         &_active {
-            color: #000;
+            color: $dark;
             &::before {
-                background-color:#000;
+                background-color:$dark;
             }
         }
     }
@@ -127,6 +129,10 @@
     .back-button {
         width: 190px;
         align-self: center;
+
+        @media(max-width: 900px) {
+            display: block;
+        }
     }
 }
 
@@ -137,7 +143,7 @@
     border: none;
     box-shadow: 4px 4px 20px rgba(0,0,0,.5);
     border-radius: 5px;
-    color: #000;
+    color: $dark;
     font-size: 14px;
     font-weight: 700;
     overflow: hidden;
@@ -149,7 +155,7 @@
     z-index: 1;
     transition: all .4s ease-in;
     &::before {
-        background-color: #000;
+        background-color: $dark;
         bottom: 0;
         content: "";
         height: 0%;
@@ -160,11 +166,15 @@
         z-index: -1;
     }
     &:hover {
-		color: #fff;
+		color: $white;
 
 		&::before {
 			height: 100%;
 		}
 	}
+
+    @media(max-width: 900px) {
+        display: none;
+    }
 }
 

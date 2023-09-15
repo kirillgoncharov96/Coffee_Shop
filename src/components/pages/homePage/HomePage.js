@@ -1,4 +1,5 @@
 
+import { Helmet } from 'react-helmet';
 import HeaderHome from '../../headers/headerHome/HeaderHome';
 import Navigation from '../../navigation/Navigation';
 import SectionHomeAbout from '../../sections/sectionHomeAbout/SectionHomeAbout';
@@ -11,7 +12,11 @@ const HomePage = () => {
 
 
     return (
-        <>
+        <>  
+            <Helmet>
+				<meta name="description" content='Coffee beans shop "Everything You Love About Coffee"' />
+				<title>Coffee House</title>
+			</Helmet>
             <header className='home-header'>
                 <Navigation/>
                 <HeaderHome/>

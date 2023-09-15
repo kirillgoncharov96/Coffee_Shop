@@ -38,7 +38,7 @@
     }
     &__input {
         border-radius: 4px;
-        background: #fff;
+        background: $white;
         box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.25);
         height: 30px;
         border: none;
@@ -58,7 +58,7 @@
         }
 
         &:focus {
-            box-shadow: 4px 4px 20px #5f4430;
+            box-shadow: 4px 4px 20px $brown;
             &::placeholder {
                 color: transparent;
             }
@@ -92,7 +92,7 @@
     }
     &__button {
         position: relative;
-        background: #fff;
+        background: $white;
         box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.25);
         width: 75px;
         height: 30px;
@@ -121,7 +121,7 @@
         &::before {
             position: absolute;
             content: "";
-            background-color:#e3d1c5;
+            background-color:$grey;
             width: 100%;
             height: 0%;
             left: 0;

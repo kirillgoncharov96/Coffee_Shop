@@ -1,3 +1,5 @@
+@import '../styles/variables.scss';
+
 .divider {
     position: relative;
     height: 30px;
@@ -6,7 +8,7 @@
     &::after {
         content: '';
         position: absolute;
-        background-color: #000;
+        background-color: $dark;
         width: 60px;
         height: 1px;
         bottom: 50%;

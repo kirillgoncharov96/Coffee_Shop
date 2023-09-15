@@ -1,6 +1,6 @@
 
 
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Data from '../data/Data';
 import Spinner from '../spinner/Spinner';
@@ -14,33 +14,23 @@ const CoffeeList = (props) => {
     const {best, input, country} = props
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(true);
-    // const clearError = useCallback(() => setError(null), []);
+    const [error, setError] = useState(false);
 
     useEffect(() =>{
-        // try {
-        //     setData(Data)
-        // }catch(e) {
-        //     console.log( `Error: ${e.name}: ${e.message}`);
-        // }
         updateData()
         // eslint-disable-next-line
     }, [Data])
 
     const onDataLoaded = () => {
-        // clearError();
         setLoading(true);
         try {
-            console.log(loading)
             setData(Data);
-            console.log(data)
             setLoading(false);
         }catch(e){
             console.log( `Error: ${e.name}: ${e.message}`);
             setError(e.message);
             setLoading(false);
         }
-        
     }
 
     const updateData = () => {
@@ -52,12 +42,21 @@ const CoffeeList = (props) => {
             return data
         }
 
+        if (data.length === 0) {
+            setError(true)
+        }
 
-        return data.filter(item => item.title.toUpperCase().indexOf(input.toUpperCase()) > -1)
+        try {
+            return data.filter(item => item.title.toUpperCase().indexOf(input.toUpperCase()) > -1)
+        } catch(e) {
+            setError(e.message)
+        }
+        
         
     }
 
     const searchCountry = (items) => {
+
         switch (country) {
             case 'Brazil':
                 return items.filter(item => item.country === 'Brazil');
@@ -69,7 +68,8 @@ const CoffeeList = (props) => {
                 return items;
         }
     }
-    console.log(error, data, best)
+
+
     const errorMessage = error ? <ErrorMessage/> : null;
     const spinner = loading ? <Spinner/> : null;
     const itemsBest = !(loading || error || !best || !data) ? <ItemsHome data={data}/> : null;
@@ -94,7 +94,7 @@ const CoffeeList = (props) => {
 }
 
 const ItemsHome = ({data}) => {
-    console.log(data)
+
     if (data.filter(item => item.best === true).length === 0) {
         return <ErrorMessage/>
     }

@@ -6,6 +6,7 @@ import Spinner from '../../spinner/Spinner';
 import ErrorMessage from '../../errorMessage/ErrorMessage';
 import NotFoundPage from '../../pages/notFoundPage/NotFoundPage';
 
+
 import imageAromistico from '../../../assets/img/imageCoffee/Aromistico.png';
 import imageSolimo from '../../../assets/img/imageCoffee/solimo-big.png';
 import imagePresto from '../../../assets/img/imageCoffee/presto-big.png';
@@ -76,6 +77,8 @@ const View = ({data}) => {
     }
 
     const {title, country, price} = data[0]
+
+    
     
     const filterImg = () => {
         switch(title) {
@@ -92,6 +95,7 @@ const View = ({data}) => {
     
     return (
         <>
+            
             <div className="product__image">
                 <img src={filterImg()} alt={title}/>
             </div>
