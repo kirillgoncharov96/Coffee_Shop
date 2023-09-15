@@ -12,10 +12,10 @@ import './coffeeList.scss';
 
 const CoffeeList = (props) => {
     const {best, input, country} = props
-    const [data, setData] = useState([]);
+    const [data, setData] = useState(null);
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
-    const clearError = useCallback(() => setError(null), []);
+    const [error, setError] = useState(true);
+    // const clearError = useCallback(() => setError(null), []);
 
     useEffect(() =>{
         // try {
@@ -28,7 +28,7 @@ const CoffeeList = (props) => {
     }, [Data])
 
     const onDataLoaded = () => {
-        clearError();
+        // clearError();
         setLoading(true);
         try {
             console.log(loading)
@@ -52,10 +52,7 @@ const CoffeeList = (props) => {
             return data
         }
 
-        if (data.length === 0) {
-            return data
-        }
-        
+
         return data.filter(item => item.title.toUpperCase().indexOf(input.toUpperCase()) > -1)
         
     }
@@ -72,30 +69,34 @@ const CoffeeList = (props) => {
                 return items;
         }
     }
-    
-
-    const visibleData = searchCountry(searchTitle());
-    const errorMessage = error ? <errorMessage/> : null;
+    console.log(error, data, best)
+    const errorMessage = error ? <ErrorMessage/> : null;
     const spinner = loading ? <Spinner/> : null;
-    const items = !(error || loading || !best) ? <ItemsHome data={data}/> : <ItemsSearch visibleData={visibleData}/>;  // еще добавить потом ошибку если нет лучших вкусов
+    const itemsBest = !(loading || error || !best || !data) ? <ItemsHome data={data}/> : null;
+    const items = !(loading || error || !data || best) ? <ItemsSearch  visibleData={searchCountry(searchTitle())}/> : null;  
     
     return (
         <ul className='coffee__list'>
-            <li className='coffee__items'>
-                {errorMessage}
-                {items}
-                {spinner}
-            </li>   
+            {
+                data ? <li className='coffee__items'>
+                    {itemsBest}
+                    {items}
+                    {spinner}
+                    {errorMessage}
+                </li> :
+                <>
+                    {spinner}
+                    {errorMessage}
+                </>
+            }   
         </ul>
     )
-
-
 }
 
 const ItemsHome = ({data}) => {
     console.log(data)
-    if(data.length === 0) {
-        return <p className="error">Product not found</p>
+    if (data.filter(item => item.best === true).length === 0) {
+        return <ErrorMessage/>
     }
 
     return data.filter(item => item.best === true).map((item, i) => {
@@ -111,7 +112,7 @@ const ItemsHome = ({data}) => {
 }
 
 const ItemsSearch = ({visibleData}) => {
-    console.log(visibleData)
+    
     if(visibleData.length === 0) {
         return <p className="error">Product not found</p>
     }

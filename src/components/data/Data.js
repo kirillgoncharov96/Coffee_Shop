@@ -76,5 +76,5 @@ const Data = [
     }
 ];
 
-// export default Data;
+export default Data;
 

@@ -7,6 +7,32 @@
             font-size: 20px;
             font-weight: 700;
             margin: 0 auto;
+            grid-column-start: 2;
+
+            @media(max-width: 850px) {
+                position: relative;
+                margin-left: -57%;
+            }
+
+            @media(max-width: 575px) {
+                grid-column-start: 1;
+                position: static;
+                margin: 0 auto;
+            }
+        }
+        .error-message {
+            grid-column-start: 2;
+
+            @media(max-width: 850px) {
+                position: relative;
+                margin-left: -290px;
+            }
+
+            @media(max-width: 575px) {
+                grid-column-start: 1;
+                position: static;
+                margin: 0 auto;
+            }
         }
     }
     &__items {
